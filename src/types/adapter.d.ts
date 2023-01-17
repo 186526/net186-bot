@@ -1,5 +1,3 @@
-import { Address4, Address6 } from "ip-address";
-
 enum capabilities {
 	"BGP Route" = "bgp_route",
 	"Ping" = "ping",
@@ -19,7 +17,7 @@ interface device {
 }
 
 interface queryResponse {
-	level: "success" | "warning" | "error" | "danger";
+	level: "warning" | "error" | "danger";
 }
 
 interface queryError extends queryResponse {
@@ -39,6 +37,6 @@ interface adapter {
 		capability: capabilities,
 		device: device,
 		vrf: string,
-		target: Address4 | Address6
-	): Promise<queryError | querySuccess | queryResponse>;
+		target: import("ip-address").Address4 | import("ip-address").Address6,
+	): Promise<queryError | querySuccess>;
 }

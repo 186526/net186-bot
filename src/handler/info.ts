@@ -1,9 +1,10 @@
 import { Context } from "telegraf";
-import { adapter } from "../types/adapter";
 
 export default function handleInfo(adapter: adapter) {
     return async (ctx: Context)=>{
         const info = await adapter.info();
-        ctx.reply(`${info.name} Bot from ${info.organization}.`)    
+        await ctx.reply(`${info.name} Bot from ${info.organization}.`, {
+            reply_to_message_id: ctx.message?.message_id
+        })    
     }
 }

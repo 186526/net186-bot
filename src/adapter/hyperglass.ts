@@ -1,5 +1,4 @@
 import axios, { AxiosInstance } from "axios";
-import { adapter, capabilities, device, info, queryError, querySuccess } from "../types/adapter";
 import { Address4, Address6 } from 'ip-address';
 
 interface deviceRaw {
